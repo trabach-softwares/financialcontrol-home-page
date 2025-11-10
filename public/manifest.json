@@ -1,0 +1,26 @@
+{
+  "name": "Financial Control",
+  "short_name": "Financial Control",
+  "description": "Controle de receitas e despesas para pequenas e médias empresas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2C5F2D",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/ControleFinanceiro.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ControleFinanceiro.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["finance", "business", "productivity"],
+  "lang": "pt-BR"
+}

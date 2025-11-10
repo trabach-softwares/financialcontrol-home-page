@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="/ControleFinanceiro.svg"/>
+      <square150x150logo src="/ControleFinanceiro.png"/>
+      <square310x310logo src="/ControleFinanceiro.png"/>
+      <wide310x150logo src="/ControleFinanceiro.png"/>
+      <TileColor>#2C5F2D</TileColor>
+    </tile>
+  </msapplication>
+</browserconfig>

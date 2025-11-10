@@ -1,0 +1,6 @@
+# robots.txt para Financial Control
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://financialcontrol.com.br/sitemap.xml
