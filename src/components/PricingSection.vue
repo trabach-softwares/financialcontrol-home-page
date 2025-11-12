@@ -2,24 +2,13 @@
   <section class="pricing-section" id="planos">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Selecione o plano ideal para suas necessidades</h2>
-        <p class="section-subtitle">Comece grátis e expanda conforme seu negócio cresce</p>
+        <h2 class="section-title">Escolha seu plano e comece a economizar hoje</h2>
+        <p class="section-subtitle">Todos os planos incluem 14 dias grátis • Cancele quando quiser • Sem pegadinhas</p>
       </div>
 
       <div class="pricing-grid">
-        <!-- Loading State -->
-        <div v-if="loading" class="loading-container">
-          <div class="spinner"></div>
-          <p>Carregando planos...</p>
-        </div>
-
-        <!-- Error State -->
-        <div v-else-if="error" class="error-container">
-          <p>⚠️ {{ error }}</p>
-        </div>
-
-        <!-- Plans Grid -->
-        <template v-else>
+        <!-- Plans Grid - Sempre mostra planos estáticos -->
+        <template>
           <div 
             v-for="plan in plans" 
             :key="plan.id"
@@ -31,7 +20,7 @@
               'premium': plan.name.toLowerCase() === 'premium'
             }"
           >
-            <div v-if="plan.isPopular" class="popular-badge">Mais Popular</div>
+            <div v-if="plan.isPopular" class="popular-badge">🔥 MAIS ESCOLHIDO</div>
             
             <div class="card-header">
               <h3 class="plan-name">{{ plan.name }}</h3>
@@ -56,6 +45,10 @@
               </ul>
             </div>
 
+            <div v-if="plan.savings" class="savings-badge">
+              💰 {{ plan.savings }}
+            </div>
+
             <a 
               href="https://app.financialcontrol.com.br/" 
               target="_blank" 
@@ -64,13 +57,34 @@
               :class="`btn-${plan.buttonStyle}`"
             >
               {{ plan.buttonText }}
+              <svg v-if="plan.isPopular" class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
             </a>
           </div>
         </template>
       </div>
 
       <div class="pricing-footer">
-        <p>💳 Todos os planos incluem 14 dias de teste grátis • Cancele quando quiser</p>
+        <div class="guarantees">
+          <div class="guarantee-item">
+            <span class="guarantee-icon">✓</span>
+            <span>14 dias grátis sem cartão</span>
+          </div>
+          <div class="guarantee-item">
+            <span class="guarantee-icon">✓</span>
+            <span>Cancele a qualquer momento</span>
+          </div>
+          <div class="guarantee-item">
+            <span class="guarantee-icon">✓</span>
+            <span>Suporte em português</span>
+          </div>
+          <div class="guarantee-item">
+            <span class="guarantee-icon">✓</span>
+            <span>Seus dados 100% seguros</span>
+          </div>
+        </div>
+        <p class="pricing-note">Mais de 5.000 empresas já confiam no Financial Control</p>
       </div>
     </div>
   </section>
@@ -79,10 +93,80 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const plans = ref([])
-const loading = ref(true)
-const error = ref(null)
+// Usar planos estáticos por padrão (sem chamada de API que causa CORS)
+const plans = ref([
+  {
+    id: 'free',
+    name: 'Gratuito',
+    description: 'Ideal para começar hoje mesmo',
+    price: 0,
+    currency: 'R$',
+    period: '/mês',
+    isPopular: false,
+    features: [
+      '✨ Até 50 transações por mês',
+      '📊 Dashboard básico em tempo real',
+      '📁 3 categorias personalizadas',
+      '📈 Relatórios mensais',
+      '✉️ Suporte por email'
+    ],
+    buttonText: 'Começar Grátis',
+    buttonStyle: 'secondary'
+  },
+  {
+    id: 'pro',
+    name: 'Profissional',
+    description: 'Para quem quer resultados sérios',
+    price: 29.90,
+    currency: 'R$',
+    period: '/mês',
+    isPopular: true,
+    features: [
+      '🚀 Transações ilimitadas',
+      '📊 Dashboard avançado com IA',
+      '📁 Categorias ilimitadas',
+      '📈 Gráficos e análises avançadas',
+      '💾 Exportação PDF e Excel',
+      '🎯 Metas financeiras automáticas',
+      '⚡ Suporte prioritário',
+      '📱 App mobile completo'
+    ],
+    buttonText: 'Começar Teste Grátis',
+    buttonStyle: 'primary',
+    savings: 'Economize até 30% nos gastos'
+  },
+  {
+    id: 'premium',
+    name: 'Empresarial',
+    description: 'Solução completa para sua empresa',
+    price: 89.90,
+    currency: 'R$',
+    period: '/mês',
+    isPopular: false,
+    features: [
+      '⭐ Tudo do Profissional, mais:',
+      '🏦 Integração bancária automática',
+      '🤖 IA para categorização inteligente',
+      '📋 Relatórios personalizados',
+      '🔌 API para integrações',
+      '👥 Até 10 usuários simultâneos',
+      '🛡️ Backup diário automático',
+      '👨‍💼 Gerente de conta dedicado',
+      '📞 Suporte 24/7 prioritário'
+    ],
+    buttonText: 'Falar com Especialista',
+    buttonStyle: 'secondary'
+  }
+])
 
+const formatPrice = (price) => {
+  if (price === 0) return 'Grátis'
+  return price.toFixed(2).replace('.', ',')
+}
+
+// Comentado: chamada de API que causa erro CORS
+// Usando planos estáticos definidos acima
+/*
 // Obter URL da API das variáveis de ambiente
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
@@ -198,6 +282,7 @@ const formatPrice = (price) => {
 onMounted(() => {
   fetchPlans()
 })
+*/
 </script>
 
 <style scoped>
@@ -287,19 +372,27 @@ onMounted(() => {
 .pricing-card.featured {
   border-color: #2C5F2D;
   border-width: 3px;
+  box-shadow: 0 8px 24px rgba(44, 95, 45, 0.15);
+  transform: scale(1.05);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-8px);
 }
 
 .popular-badge {
   position: absolute;
-  top: -12px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: #2C5F2D;
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
   color: #FFFFFF;
   padding: 0.5rem 1.5rem;
   border-radius: 20px;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+  letter-spacing: 0.5px;
 }
 
 .plan-badge {
@@ -393,29 +486,49 @@ onMounted(() => {
   margin-top: 2px;
 }
 
+.savings-badge {
+  background: linear-gradient(135deg, #FFF4E6 0%, #FFE7CC 100%);
+  border: 2px solid #FF8C42;
+  color: #CC5500;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin-bottom: 1.5rem;
+}
+
 .btn {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   text-decoration: none;
   text-align: center;
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
-  display: block;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .btn-primary {
-  background: #2C5F2D;
+  background: linear-gradient(135deg, #2C5F2D 0%, #1e4620 100%);
   color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(44, 95, 45, 0.25);
 }
 
 .btn-primary:hover {
-  background: #1e4620;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(44, 95, 45, 0.3);
+  box-shadow: 0 6px 20px rgba(44, 95, 45, 0.35);
 }
 
 .btn-secondary {
@@ -444,13 +557,45 @@ onMounted(() => {
 
 .pricing-footer {
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 3rem;
+  margin-top: 3rem;
   border-top: 1px solid #E5E7EB;
 }
 
-.pricing-footer p {
-  font-size: 1rem;
+.guarantees {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.guarantee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
   color: var(--fc-text-secondary);
+}
+
+.guarantee-icon {
+  width: 24px;
+  height: 24px;
+  background: #2C5F2D;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.pricing-note {
+  font-size: 1.0625rem;
+  color: var(--fc-text-primary);
+  font-weight: 600;
   margin: 0;
 }
 
@@ -462,12 +607,29 @@ onMounted(() => {
   .section-title {
     font-size: 2rem;
   }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
 
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+  }
+  
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+  
+  .pricing-card.featured:hover {
+    transform: translateY(-8px);
+  }
+  
+  .guarantees {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 </style>

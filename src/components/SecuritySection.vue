@@ -2,8 +2,27 @@
   <section class="security-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Seus dados estão seguros conosco</h2>
-        <p class="section-subtitle">Segurança de nível bancário para proteger suas informações financeiras</p>
+        <h2 class="section-title">Segurança que você pode confiar</h2>
+        <p class="section-subtitle">Protegemos suas informações com o mesmo nível de segurança dos maiores bancos do mundo</p>
+      </div>
+
+      <div class="trust-stats">
+        <div class="stat-item">
+          <div class="stat-number">256-bit</div>
+          <div class="stat-label">Criptografia</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">Uptime</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Monitoramento</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Backups Diários</div>
+        </div>
       </div>
 
       <div class="security-grid">
@@ -80,11 +99,26 @@
         </div>
         <div class="badge-item">
           <div class="badge-icon">🔒</div>
-          <span>Anti-Fraude</span>
+          <span>LGPD Compliant</span>
         </div>
         <div class="badge-item">
           <div class="badge-icon">🛡️</div>
-          <span>SSL/TLS</span>
+          <span>SSL/TLS 1.3</span>
+        </div>
+      </div>
+
+      <div class="security-cta">
+        <div class="cta-box">
+          <div class="cta-icon">🔐</div>
+          <h3>Seus dados estão 100% protegidos</h3>
+          <p>Mais de 5.000 empresas confiam na nossa segurança para proteger informações financeiras sensíveis</p>
+          <a href="https://app.financialcontrol.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Testar Grátis por 14 Dias
+            <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <p class="cta-note">✓ Sem cartão de crédito • Segurança garantida</p>
         </div>
       </div>
     </div>
@@ -108,7 +142,7 @@
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
@@ -120,8 +154,35 @@
 
 .section-subtitle {
   font-size: 1.25rem;
-  color: var(--fc-text-secondary);
+  color: #4A5568;
   margin: 0;
+}
+
+.trust-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #2C5F2D 0%, #1e4620 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(44, 95, 45, 0.25);
+}
+
+.stat-item {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
 .security-grid {
@@ -185,8 +246,9 @@
   padding: 2rem;
   background: #FFFFFF;
   border-radius: 12px;
-  border: 1px solid #E5E7EB;
+  border: 2px solid #E5E7EB;
   flex-wrap: wrap;
+  margin-bottom: 4rem;
 }
 
 .badge-item {
@@ -213,12 +275,92 @@
   color: var(--fc-text-primary);
 }
 
+.security-cta {
+  margin-top: 4rem;
+}
+
+.cta-box {
+  background: linear-gradient(135deg, #F4F5F7 0%, #FFFFFF 100%);
+  border: 2px solid #2C5F2D;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.cta-box h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fc-text-primary);
+  margin: 0 0 1rem;
+}
+
+.cta-box > p {
+  font-size: 1.125rem;
+  color: #4A5568;
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #2C5F2D 0%, #1e4620 100%);
+  color: #FFFFFF;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(44, 95, 45, 0.3);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 95, 45, 0.4);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cta-note {
+  font-size: 0.9375rem;
+  color: #718096;
+  margin: 1.5rem 0 0;
+}
+
 @media (max-width: 768px) {
   .security-section {
     padding: 4rem 0;
   }
 
   .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .trust-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
     font-size: 2rem;
   }
 
@@ -228,6 +370,18 @@
 
   .compliance-badges {
     gap: 1.5rem;
+  }
+  
+  .cta-box {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cta-box h3 {
+    font-size: 1.5rem;
+  }
+  
+  .cta-box > p {
+    font-size: 1rem;
   }
 }
 </style>

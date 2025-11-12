@@ -2,8 +2,8 @@
   <section class="dashboard-preview">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Visualize suas finanças em tempo real</h2>
-        <p class="section-subtitle">Dashboard intuitivo com todas as informações que você precisa</p>
+        <h2 class="section-title">Tenha o controle total do seu dinheiro em um só lugar</h2>
+        <p class="section-subtitle">Veja em tempo real para onde vai cada centavo e tome decisões baseadas em dados reais</p>
       </div>
 
       <div class="preview-container">
@@ -73,18 +73,32 @@
       <div class="features-highlight">
         <div class="highlight-item">
           <div class="highlight-icon">⚡</div>
-          <h4>Atualização Instantânea</h4>
-          <p>Veja suas finanças atualizarem em tempo real</p>
+          <h4>Economize até 30% em despesas</h4>
+          <p>Identifique gastos desnecessários e veja seu lucro crescer automaticamente</p>
         </div>
         <div class="highlight-item">
           <div class="highlight-icon">📱</div>
-          <h4>Acesso Multiplataforma</h4>
-          <p>Desktop, tablet e mobile sempre sincronizados</p>
+          <h4>Acesse de qualquer lugar</h4>
+          <p>Desktop, tablet e mobile sempre sincronizados e atualizados</p>
         </div>
         <div class="highlight-item">
           <div class="highlight-icon">🎯</div>
-          <h4>Insights Inteligentes</h4>
-          <p>Análises automáticas para decisões melhores</p>
+          <h4>Decisões mais inteligentes</h4>
+          <p>Relatórios automáticos que mostram exatamente onde investir</p>
+        </div>
+      </div>
+
+      <div class="cta-container">
+        <div class="cta-box">
+          <h3>Pronto para ter controle total das suas finanças?</h3>
+          <p>Junte-se a mais de 5.000 empresas que já estão economizando tempo e dinheiro</p>
+          <a href="https://app.financialcontrol.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-cta">
+            Criar Minha Conta Grátis
+            <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <p class="cta-note">✓ Não precisa de cartão de crédito • Comece em 2 minutos</p>
         </div>
       </div>
     </div>
@@ -116,12 +130,14 @@
   font-weight: 700;
   color: var(--fc-text-primary);
   margin: 0 0 1rem;
+  line-height: 1.2;
 }
 
 .section-subtitle {
   font-size: 1.25rem;
-  color: var(--fc-text-secondary);
+  color: #4A5568;
   margin: 0;
+  line-height: 1.6;
 }
 
 .preview-container {
@@ -332,12 +348,22 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .highlight-item {
   text-align: center;
   padding: 2rem 1.5rem;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #EBECF0;
+  transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+  border-color: #2C5F2D;
+  box-shadow: 0 8px 24px rgba(44, 95, 45, 0.1);
+  transform: translateY(-4px);
 }
 
 .highlight-icon {
@@ -349,7 +375,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--fc-text-primary);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
 }
 
 .highlight-item p {
@@ -359,17 +385,75 @@
   line-height: 1.6;
 }
 
+.cta-container {
+  margin-top: 4rem;
+}
+
+.cta-box {
+  background: linear-gradient(135deg, #2C5F2D 0%, #1e4620 100%);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(44, 95, 45, 0.25);
+}
+
+.cta-box h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 1rem;
+}
+
+.cta-box > p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 2rem;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  color: #2C5F2D;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cta-note {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 1.5rem 0 0;
+}
+
 @media (max-width: 768px) {
   .dashboard-preview {
     padding: 3rem 0;
   }
 
   .section-title {
-    font-size: 1.75rem;
+    font-size: 1.875rem;
   }
 
   .section-subtitle {
-    font-size: 1rem;
+    font-size: 1.0625rem;
   }
 
   .welcome-banner {
@@ -393,6 +477,18 @@
 
   .metrics-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cta-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-box h3 {
+    font-size: 1.5rem;
+  }
+
+  .cta-box > p {
+    font-size: 1rem;
   }
 }
 </style>
