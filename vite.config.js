@@ -3,4 +3,13 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://app.financialcontrol.com.br',
+        changeOrigin: true,
+        secure: false,
+      }
+    }
+  }
 })
